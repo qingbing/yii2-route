@@ -1,0 +1,40 @@
+{
+  "name": "qingbing/yii2-route",
+  "description": "yii2实现组件:路由管理，可开启路由日志，接口访问日志",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "yii",
+    "yii2",
+    "feature",
+    "component",
+    "route",
+    "yii2-route"
+  ],
+  "homepage": "http://www.phpcorner.net",
+  "authors": [
+    {
+      "name": "qingbing",
+      "email": "780042175@qq.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "php": "^7.1.0",
+    "yiisoft/yii2": "~2.0.14",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-httpclient": "^2.0",
+    "yiisoft/yii2-queue": "^2.3",
+    "yiisoft/yii2-redis": "^2.0",
+    "qingbing/zf-helper": "^1.0",
+    "qingbing/yii2-helper": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "YiiRoute\\": "src"
+    }
+  }
+}
