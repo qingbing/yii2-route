@@ -5,7 +5,7 @@
  * @copyright   Chengdu Qb Technology Co., Ltd.
  */
 
-namespace YiiRoute\bootstraps\logic;
+namespace YiiRoute\boots\logic;
 
 
 use yii\base\BaseObject;
@@ -16,7 +16,7 @@ use yii\web\Response;
  * 抽象类 ： 路由日志自定义
  *
  * Class RouteLogBase
- * @package YiiRoute\bootstraps\logic
+ * @package YiiRoute\boots\logic
  */
 abstract class BaseRouteLog extends BaseObject
 {

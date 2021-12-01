@@ -5,7 +5,7 @@
  * @copyright   Chengdu Qb Technology Co., Ltd.
  */
 
-namespace YiiRoute\bootstraps;
+namespace YiiRoute\boots;
 
 
 use Exception;
@@ -20,8 +20,8 @@ use YiiHelper\features\system\models\Systems;
 use YiiHelper\helpers\AppHelper;
 use YiiHelper\helpers\Req;
 use YiiHelper\traits\TResponse;
-use YiiRoute\bootstraps\logic\BaseRouteLog;
-use YiiRoute\bootstraps\logic\RouteManager;
+use YiiRoute\boots\logic\BaseRouteLog;
+use YiiRoute\boots\logic\RouteManager;
 use YiiRoute\models\RouteInterfaces;
 use Zf\Helper\DataStore;
 use Zf\Helper\Exceptions\CustomException;
@@ -32,7 +32,7 @@ use Zf\Helper\Timer;
  * bootstrap组件 : 路由及路由日志记录入库
  *
  * Class Bootstrap
- * @package YiiRoute\bootstraps
+ * @package YiiRoute\boots
  */
 class RouteBootstrap implements BootstrapInterface
 {
@@ -177,7 +177,7 @@ class RouteBootstrap implements BootstrapInterface
                 if (!$this->routeLogInstance instanceof BaseRouteLog) {
                     throw new CustomException(replace('日志路由"{routeClass}"必须继承路由抽象类"{baseRouteLog}"', [
                         '{routeClass}'   => $routeLogClass,
-                        '{baseRouteLog}' => '\YiiRoute\bootstraps\logic\BaseRouteLog',
+                        '{baseRouteLog}' => '\YiiRoute\boots\logic\BaseRouteLog',
                     ]));
                 }
                 Yii::$app->on(\yii\web\Application::EVENT_BEFORE_REQUEST, [$this->routeLogInstance, 'beforeRequest']);

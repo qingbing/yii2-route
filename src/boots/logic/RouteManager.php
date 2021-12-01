@@ -5,7 +5,7 @@
  * @copyright   Chengdu Qb Technology Co., Ltd.
  */
 
-namespace YiiRoute\bootstraps\logic;
+namespace YiiRoute\boots\logic;
 
 
 use Yii;
@@ -25,7 +25,7 @@ use Zf\Helper\Util;
  * 接口参数信息管理工具
  *
  * Class RouteManager
- * @package YiiRoute\bootstraps\logic
+ * @package YiiRoute\boots\logic
  */
 class RouteManager
 {

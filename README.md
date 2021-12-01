@@ -23,7 +23,7 @@
 ],
 'components' => [
     'bootRoute' => [
-        'class'                 => \YiiRoute\bootstraps\RouteBootstrap::class,
+        'class'                 => \YiiRoute\boots\RouteBootstrap::class,
         'openRoute'             => true, // 开启路由记录
         'acceptNewInterface'    => true, // 记录新接口信息
         'throwIfSystemNotExist' => true, // 不存在的系统是否抛出异常终止
