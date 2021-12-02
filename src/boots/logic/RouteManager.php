@@ -18,7 +18,7 @@ use YiiHelper\validators\JsonValidator;
 use YiiRoute\models\RouteInterfaceFields;
 use YiiRoute\models\RouteInterfaces;
 use YiiRoute\models\RouteLogs;
-use Zf\Helper\Business\ParentTree;
+use Zf\Helper\Business\DeepTree;
 use Zf\Helper\Util;
 
 /**
@@ -548,11 +548,11 @@ class RouteManager
     {
         $interfaceFields = self::getInterface($urlPath)['fields'];
 
-        $tree = ParentTree::getInstance()
+        $tree = DeepTree::getInstance()
             ->setFilter(function ($val) use ($type) {
                 return $type == $val['type'];
             })
-            ->setData($interfaceFields)
+            ->setSourceData($interfaceFields)
             ->setId("field")
             ->setPid("parent_alias")
             ->setTopTag("")
