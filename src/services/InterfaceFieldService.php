@@ -15,6 +15,7 @@ use YiiRoute\models\RouteInterfaceFields;
 use YiiRoute\models\RouteInterfaces;
 use Zf\Helper\Exceptions\BusinessException;
 use Zf\Helper\Exceptions\CustomException;
+use Zf\Helper\Exceptions\UnsupportedException;
 
 /**
  * 服务 ： 接口字段管理
@@ -79,7 +80,7 @@ class InterfaceFieldService extends Service implements IInterfaceFieldService
      */
     public function add(array $params): bool
     {
-        throw new CustomException("未开放该功能");
+        throw new UnsupportedException("该功能未开通，只能通过接口整体结构进行添加");
     }
 
     /**
