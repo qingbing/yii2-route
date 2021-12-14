@@ -16,10 +16,10 @@ use YiiHelper\traits\TResponse;
 /**
  * 操作 : 接口系统类型选项
  *
- * Class SystemTypeOptions
+ * Class ActionSystemTypeOptions
  * @package YiiRoute\actions
  */
-class SystemTypeOptions extends Action
+class ActionSystemTypeOptions extends Action
 {
     use TResponse;
 

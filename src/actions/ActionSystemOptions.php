@@ -18,10 +18,10 @@ use Zf\Helper\Traits\TOptionFormat;
 /**
  * 操作 ： 接口系统选项
  *
- * Class SystemOptions
+ * Class ActionSystemOptions
  * @package YiiRoute\actions
  */
-class SystemOptions extends Action
+class ActionSystemOptions extends Action
 {
     use TValidator;
     use TResponse;
