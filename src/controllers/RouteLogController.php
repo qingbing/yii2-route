@@ -14,7 +14,6 @@ use YiiHelper\features\system\models\Systems;
 use YiiRoute\interfaces\IRouteLogService;
 use YiiRoute\models\RouteLogs;
 use YiiRoute\services\RouteLogService;
-use Zf\Helper\Traits\Models\TLabelYesNo;
 
 /**
  * 控制器 ： 路由日志查询
@@ -43,7 +42,7 @@ class RouteLogController extends RestController
             ['trace_id', 'string', 'label' => 'Trace ID'],
             ['url_path', 'string', 'label' => '接口路径'],
             ['method', 'in', 'label' => '请求方法', 'range' => array_keys(RouteLogs::methods())],
-            ['is_success', 'in', 'label' => '是否成功', 'range' => array_keys(TLabelYesNo::yesNoLabels())],
+            ['is_success', 'boolean', 'label' => '是否成功'],
             ['message', 'string', 'label' => '消息关键字'],
             ['keyword', 'string', 'label' => '关键字'],
             ['ip', 'string', 'label' => '操作IP'],

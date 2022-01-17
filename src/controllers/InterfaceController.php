@@ -15,7 +15,6 @@ use YiiHelper\validators\JsonValidator;
 use YiiRoute\interfaces\IInterfaceService;
 use YiiRoute\models\RouteInterfaces;
 use YiiRoute\services\InterfaceService;
-use Zf\Helper\Traits\Models\TLabelYesNo;
 
 /**
  * 控制器 ： 接口管理
@@ -47,10 +46,10 @@ class InterfaceController extends RestController
 
             ['source', 'in', 'label' => '接口来源', 'range' => array_keys(RouteInterfaces::sources())],
 
-            ['is_operate', 'in', 'label' => '是否操作类', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_open_route_log', 'in', 'label' => '开启路由日志', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_open_mocking', 'in', 'label' => '开启mock', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_use_custom_mock', 'in', 'label' => '自定义mock', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_operate', 'boolean', 'label' => '是否操作类'],
+            ['is_open_route_log', 'boolean', 'label' => '开启路由日志'],
+            ['is_open_mocking', 'boolean', 'label' => '开启mock'],
+            ['is_use_custom_mock', 'boolean', 'label' => '自定义mock'],
 
             ['record_field_type', 'in', 'label' => '字段记录方式', 'range' => array_keys(RouteInterfaces::recordFieldTypes())],
             ['validate_type', 'in', 'label' => '接口校验方式', 'range' => array_keys(RouteInterfaces::validateTypes())],
@@ -79,18 +78,18 @@ class InterfaceController extends RestController
             ['name', 'string', 'label' => '接口名称'],
             ['system_code', 'exist', 'label' => '系统代码', 'targetClass' => Systems::class, 'targetAttribute' => 'code'],
             ['url_path', 'unique', 'label' => '接口path', 'targetClass' => RouteInterfaces::class, 'targetAttribute' => 'url_path'],
-            ['is_operate', 'in', 'label' => '是否操作类', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_operate', 'boolean', 'label' => '是否操作类'],
             ['description', 'string', 'label' => '接口描述'],
 
             ['record_field_type', 'in', 'label' => '字段记录方式', 'range' => array_keys(RouteInterfaces::recordFieldTypes())],
             ['validate_type', 'in', 'label' => '接口校验方式', 'range' => array_keys(RouteInterfaces::validateTypes())],
             ['strict_validate_type', 'in', 'label' => '开启严格校验', 'range' => array_keys(RouteInterfaces::strictValidateTypes())],
 
-            ['is_open_route_log', 'in', 'label' => '开启路由日志', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_open_route_log', 'boolean', 'label' => '开启路由日志'],
             ['route_log_message', 'string', 'label' => '路由操作提示'],
             ['route_log_key_fields', 'string', 'label' => '路由关键字'],
-            ['is_open_mocking', 'in', 'label' => '开启mock', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_use_custom_mock', 'in', 'label' => '自定义mock', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_open_mocking', 'boolean', 'label' => '开启mock'],
+            ['is_use_custom_mock', 'boolean', 'label' => '自定义mock'],
             ['mock_response', JsonValidator::class, 'label' => '自定义mock响应'],
         ]);
 
@@ -114,18 +113,18 @@ class InterfaceController extends RestController
             ['id', 'exist', 'label' => '接口ID', 'targetClass' => RouteInterfaces::class, 'targetAttribute' => 'id'],
 
             ['name', 'string', 'label' => '接口名称'],
-            ['is_operate', 'in', 'label' => '是否操作类', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_operate', 'boolean', 'label' => '是否操作类'],
             ['description', 'string', 'label' => '接口描述'],
 
             ['record_field_type', 'in', 'label' => '字段记录方式', 'range' => array_keys(RouteInterfaces::recordFieldTypes())],
             ['validate_type', 'in', 'label' => '接口校验方式', 'range' => array_keys(RouteInterfaces::validateTypes())],
             ['strict_validate_type', 'in', 'label' => '开启严格校验', 'range' => array_keys(RouteInterfaces::strictValidateTypes())],
 
-            ['is_open_route_log', 'in', 'label' => '开启路由日志', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_open_route_log', 'boolean', 'label' => '开启路由日志'],
             ['route_log_message', 'string', 'label' => '路由操作提示'],
             ['route_log_key_fields', 'string', 'label' => '路由关键字'],
-            ['is_open_mocking', 'in', 'label' => '开启mock', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_use_custom_mock', 'in', 'label' => '自定义mock', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_open_mocking', 'boolean', 'label' => '开启mock'],
+            ['is_use_custom_mock', 'boolean', 'label' => '自定义mock'],
             ['mock_response', JsonValidator::class, 'label' => '自定义mock响应'],
         ]);
 

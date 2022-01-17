@@ -16,7 +16,6 @@ use YiiRoute\models\RouteInterfaceFields;
 use YiiRoute\models\RouteInterfaces;
 use YiiRoute\services\InterfaceFieldService;
 use Zf\Helper\Exceptions\CustomException;
-use Zf\Helper\Traits\Models\TLabelYesNo;
 
 /**
  * 控制器 ： 接口字段管理
@@ -76,8 +75,8 @@ class InterfaceFieldController extends RestController
             ['default', 'string', 'label' => '默认值'],
             ['data_type', 'in', 'label' => '数据类型', 'range' => array_keys(RouteInterfaceFields::dataTypes())],
             ['description', 'string', 'label' => '字段描述'],
-            ['is_required', 'in', 'label' => '是否必填', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_last_level', 'in', 'label' => '最后级别', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_required', 'boolean', 'label' => '是否必填'],
+            ['is_last_level', 'boolean', 'label' => '最后级别'],
             ['rules', JsonValidator::class, 'label' => '验证规则'],
         ]);
         // 业务处理
