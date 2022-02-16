@@ -50,7 +50,7 @@ CREATE TABLE `portal_route_interface_fields` (
   `default` varchar(100) DEFAULT null COMMENT '默认值',
   `type` varchar(20) NOT NULL DEFAULT 'post' COMMENT '字段类型[input,output]',
   `data_area` varchar(20) NOT NULL DEFAULT 'post' COMMENT '字段区域[header,file,get,post]',
-  `data_type` varchar(50) NOT NULL DEFAULT '' COMMENT '数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]',
+  `data_type` varchar(50) NOT NULL DEFAULT '' COMMENT '数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]',
   `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
   `is_required` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否必填[0:否; 1:是]',
   `is_last_level` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '最后级别，子字段不记录',

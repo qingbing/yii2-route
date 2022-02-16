@@ -16,7 +16,7 @@ use YiiHelper\abstracts\Model;
  * @property string|null $default 默认值
  * @property string $type 字段类型[input,output]
  * @property string $data_area 字段区域[header,file,get,post]
- * @property string $data_type 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]
+ * @property string $data_type 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
  * @property string $description 描述
  * @property int $is_required 是否必填[0:否; 1:是]
  * @property int $is_last_level 最后级别，子字段不记录
@@ -68,7 +68,7 @@ class RouteInterfaceFields extends Model
             'default'       => '默认值',
             'type'          => '字段类型[input,output]',
             'data_area'     => '字段区域[header,file,get,post]',
-            'data_type'     => '数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]',
+            'data_type'     => '数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]',
             'description'   => '描述',
             'is_required'   => '是否必填[0:否; 1:是]',
             'is_last_level' => '最后级别，子字段不记录',

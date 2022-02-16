@@ -172,12 +172,12 @@ class RouteManager
         foreach ($params as $key => $val) {
             self::saveInterfaceField([
                 'url_path'     => $interface->url_path, // 接口的path
-                'parent_alias' => '', // 上级字段别名',
-                'alias'        => "{$interface->url_path}|{$type}|header|{$key}", // 字段别名',
-                'field'        => $key, // 字段名',
-                'type'         => $type, // 字段类型[input,output]',
-                'data_area'    => 'header', // 字段区域[header,file,get,post]',
-                'data_type'    => 'string', // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]',
+                'parent_alias' => '', // 上级字段别名
+                'alias'        => "{$interface->url_path}|{$type}|header|{$key}", // 字段别名
+                'field'        => $key, // 字段名
+                'type'         => $type, // 字段类型[input,output]
+                'data_area'    => 'header', // 字段区域[header,file,get,post]
+                'data_type'    => 'safe', // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
             ]);
         }
     }
@@ -204,12 +204,12 @@ class RouteManager
             }
             self::saveInterfaceField([
                 'url_path'     => $interface->url_path, // 接口的path
-                'parent_alias' => '', // 上级字段别名',
-                'field'        => $key, // 字段名',
-                'alias'        => "{$interface->url_path}|input|file|{$key}", // 字段别名',
-                'type'         => 'input', // 字段类型[input,output]',
-                'data_area'    => 'file', // 字段区域[header,file,get,post]',
-                'data_type'    => $data_type, // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]',
+                'parent_alias' => '', // 上级字段别名
+                'field'        => $key, // 字段名
+                'alias'        => "{$interface->url_path}|input|file|{$key}", // 字段别名
+                'type'         => 'input', // 字段类型[input,output]
+                'data_area'    => 'file', // 字段区域[header,file,get,post]
+                'data_type'    => $data_type, // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
             ]);
             // file 的 object 数组
             if ("object" === $data_type) {
@@ -234,12 +234,12 @@ class RouteManager
             $alias = $parentField ? "{$parentField}.{$val['field']}" : $val['field'];
             $model = self::saveInterfaceField([
                 'url_path'     => $interface->url_path, // 接口的path
-                'parent_alias' => $parentField, // 上级字段别名',
-                'field'        => $val['field'], // 字段名',
-                'alias'        => "{$interface->url_path}|{$type}|{$dataArea}|{$alias}", // 字段别名',
-                'type'         => $type, // 字段类型[input,output]',
-                'data_area'    => $dataArea, // 字段区域[header,file,get,post]',
-                'data_type'    => $val['type'], // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,safe,file,image,safe]',
+                'parent_alias' => $parentField, // 上级字段别名
+                'field'        => $val['field'], // 字段名
+                'alias'        => "{$interface->url_path}|{$type}|{$dataArea}|{$alias}", // 字段别名
+                'type'         => $type, // 字段类型[input,output]
+                'data_area'    => $dataArea, // 字段区域[header,file,get,post]
+                'data_type'    => $val['type'], // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
             ]);
             if (!$model->is_last_level && !empty($val['sub'])) {
                 // 非最后级别并且 sub 不为空表示有子项目
