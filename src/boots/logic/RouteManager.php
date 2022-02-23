@@ -177,7 +177,7 @@ class RouteManager
                 'field'        => $key, // 字段名
                 'type'         => $type, // 字段类型[input,output]
                 'data_area'    => 'header', // 字段区域[header,file,get,post]
-                'data_type'    => 'safe', // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
+                'data_type'    => 'string', // 数据类型[integer,double,boolean,string,object,array,items,compare,date,datetime,time,email,in,url,ip,number,default,match,file,image,safe]
             ]);
         }
     }
@@ -299,7 +299,7 @@ class RouteManager
             'sub'   => [],
         ];
         if (is_object($data)) {
-            $item = "object";
+            $item['type'] = "object";
             // 子字段分析
             foreach ($data as $field => $datum) {
                 $item['sub'][$field] = self::_releaseParams($datum, $field);
