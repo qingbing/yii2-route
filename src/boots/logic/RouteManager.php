@@ -293,10 +293,9 @@ class RouteManager
 
     private static function _releaseParams($data, $field = "root")
     {
-        $type = gettype($data);
         $item = [
             "field" => $field,
-            "type"  => $type,
+            "type"  => 'safe',
             'sub'   => [],
         ];
         if (is_object($data)) {
