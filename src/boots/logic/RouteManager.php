@@ -299,6 +299,7 @@ class RouteManager
             'sub'   => [],
         ];
         if (is_object($data)) {
+            $item = "object";
             // 子字段分析
             foreach ($data as $field => $datum) {
                 $item['sub'][$field] = self::_releaseParams($datum, $field);
