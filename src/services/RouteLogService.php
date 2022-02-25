@@ -8,6 +8,7 @@
 namespace YiiRoute\services;
 
 
+use yii\db\Exception;
 use YiiHelper\abstracts\Service;
 use YiiHelper\features\system\models\Systems;
 use YiiHelper\helpers\Pager;
@@ -34,7 +35,7 @@ class RouteLogService extends Service implements IRouteLogService
         $query = RouteLogs::find()
             ->alias('logs')
             ->leftJoin(Systems::tableName() . ' AS system', 'system.code=logs.system_code')
-            ->select(['logs.*', 'system.name'])
+            ->select(['logs.*', 'system_name' => 'system.name'])
             ->andFilterWhere(['=', 'system.code', $params['system_code']])
             ->andFilterWhere(['=', 'logs.trace_id', $params['trace_id']])
             ->andFilterWhere(['=', 'logs.method', $params['method']])
@@ -56,15 +57,17 @@ class RouteLogService extends Service implements IRouteLogService
      * 查看路由访问日志详情
      *
      * @param array $params
-     * @return mixed
+     * @return array|false|mixed
+     * @throws Exception
      */
     public function view(array $params)
     {
         // 构建查询query
         $query = RouteLogs::find()
             ->alias("logs")
-            ->select(['logs.*'])
+            ->leftJoin(Systems::tableName() . ' AS system', 'system.code=logs.system_code')
+            ->select(['logs.*', 'system_name' => 'system.name'])
             ->andWhere(['=', 'logs.id', $params['id']]);
-        return $query->one()->toArray([], ['system']);
+        return $query->createCommand()->queryOne();
     }
 }
