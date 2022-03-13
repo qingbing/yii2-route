@@ -83,6 +83,10 @@ class RouteBootstrap implements BootstrapInterface
      */
     protected $request;
     /**
+     * @var array 单系统时配置模拟系统参数
+     */
+    public $systemConf;
+    /**
      * @var Systems 系统模型
      */
     public $system;
@@ -246,7 +250,15 @@ class RouteBootstrap implements BootstrapInterface
         // 请求开始时间
         Timer::begin(self::TIMER_KEY_BEFORE_REQUEST);
         // 获取访问系统信息
-        $this->system = RouteManager::getSystem(AppHelper::app()->getSystemAlias());
+        if (is_array($this->systemConf)) {
+            // 单系统
+            $this->system       = RouteManager::getSystem($this->systemConf);
+            $this->realPathInfo = $this->request->getPathInfo();
+        } else {
+            // 多系统
+            $this->system       = RouteManager::getSystem(AppHelper::app()->getSystemAlias());
+            $this->realPathInfo = $this->system->code . '/' . $this->request->getPathInfo();
+        }
         if (empty($this->system) || !$this->system->is_enable) {
             if ($this->throwIfSystemNotExist) {
                 throw new CustomException(replace('访问不存在的系统{system}', [
@@ -256,8 +268,6 @@ class RouteBootstrap implements BootstrapInterface
                 return;
             }
         }
-        // 构建访问 url_path
-        $this->realPathInfo = $this->system->code . '/' . $this->request->getPathInfo();
         // 获取
         $this->interface = RouteManager::getInterface($this->realPathInfo)['info'];
         if (empty($this->interface) && !$this->system->is_allow_new_interface) {

@@ -3,7 +3,6 @@
 namespace YiiRoute\models;
 
 use YiiHelper\abstracts\Model;
-use YiiHelper\features\system\models\Systems;
 
 /**
  * This is the model class for table "{{%route_logs}}".
@@ -94,30 +93,5 @@ class RouteLogs extends Model
             self::METHOD_POST => 'POST',
             self::METHOD_PUT  => 'PUT',
         ];
-    }
-
-    /**
-     * 关联 : 获取关联系统信息
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSystem()
-    {
-        return $this->hasOne(Systems::class, [
-            'code' => 'system_code',
-        ])
-            ->alias("system");
-    }
-
-    /**
-     * 指定可以额外导出的字段
-     *
-     * @return array|false
-     */
-    public function extraFields()
-    {
-        return array_merge([
-            'system' => 'system',
-        ], parent::extraFields());
     }
 }

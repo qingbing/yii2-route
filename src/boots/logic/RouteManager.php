@@ -32,12 +32,16 @@ class RouteManager
     /**
      * 获取系统模型 cache-key
      *
-     * @param string $code
+     * @param string|array $system
      * @return string
      */
-    public static function cacheKeySystem(string $code)
+    public static function cacheKeySystem($system)
     {
-        return __CLASS__ . ":system:{$code}";
+        if (is_array($system)) {
+            return __CLASS__ . ":system:" . AppHelper::app()->id;
+        } else {
+            return __CLASS__ . ":system:{$system}";
+        }
     }
 
     /**
@@ -54,13 +58,26 @@ class RouteManager
     /**
      * 通过系统代码获取系统模型
      *
-     * @param string $code
+     * @param string|array $system
      * @return bool|Systems
      */
-    public static function getSystem(string $code)
+    public static function getSystem($system)
     {
-        return AppHelper::app()->cacheHelper->get(self::cacheKeySystem($code), function () use ($code) {
-            return self::getSystemModel()
+        AppHelper::app()->cacheHelper->delete(self::cacheKeySystem($system));
+        return AppHelper::app()->cacheHelper->get(self::cacheKeySystem($system), function () use ($system) {
+            if (is_array($system)) {
+                $systemModel = array_merge([
+                    'code'                   => '-',
+                    'is_enable'              => 1,
+                    'is_allow_new_interface' => 1,
+                    'is_record_field'        => 0,
+                    'is_open_validate'       => 0,
+                    'is_strict_validate'     => 0,
+                ], $system);
+                return json_decode(json_encode($systemModel));
+            }
+            $systemModel = self::getSystemModel();
+            return $systemModel
                 ->find()
                 ->andWhere(['=', 'code', $code])
                 ->one();
