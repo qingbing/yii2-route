@@ -79,7 +79,7 @@ class RouteManager
             $systemModel = self::getSystemModel();
             return $systemModel
                 ->find()
-                ->andWhere(['=', 'code', $code])
+                ->andWhere(['=', 'code', $system])
                 ->one();
         }, 300);
     }
